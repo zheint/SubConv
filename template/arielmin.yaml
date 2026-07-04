@@ -44,8 +44,15 @@ TEST_URL: https://www.gstatic.com/generate_204
 RULESET:
 - - 🛸 PT站
   - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎯 全球直连
+  - '[]GEOIP,CN'
+- - 🐟 漏网之鱼
+  - '[]FINAL'
 CUSTOM_PROXY_GROUP:
 - name: ♻️ 自动选择
   type: url-test
   regex: ^(?!.*(ZJU|浙大|内网|✉️)).*
   rule: false
+  type: url-test
+  rule: false
+  regex: (?i:\b(?:US|USA)\d*\b|America|United.*?States|美国|[^-]美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥)
