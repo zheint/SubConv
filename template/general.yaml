@@ -36,10 +36,7 @@ HEAD:
     - +.microsoft*.com
     - localhost.ptlogin2.qq.com
 TEST_URL: https://www.gstatic.com/generate_204
-
 RULESET:
-- - 🎯 全球直连
-  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
   - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/LocalAreaNetwork.list
 - - 🎯 全球直连
@@ -116,11 +113,9 @@ RULESET:
   - '[]GEOIP,CN'
 - - 🐟 漏网之鱼
   - '[]FINAL'
-
 CUSTOM_PROXY_GROUP:
 - name: ♻️ 自动选择
   type: url-test
-  url: http://www.gstatic.com/generate_204
   rule: false
 - name: 🚀 手动切换1
   type: select
