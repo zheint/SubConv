@@ -42,10 +42,10 @@ HEAD:
     - localhost.ptlogin2.qq.com
 TEST_URL: https://www.gstatic.com/generate_204
 RULESET:
-- - 🛸 ariel
+- - 🛸 PT站
   - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 CUSTOM_PROXY_GROUP:
-- name: ♻️ ariel
+- name: ♻️ 自动选择
   type: url-test
   regex: ^(?!.*(ZJU|浙大|内网|✉️)).*
   rule: false
