@@ -18,6 +18,11 @@ HEAD:
       - https://1.1.1.1/dns-query#🚀 节点选择
       - https://1.0.0.1/dns-query#🚀 节点选择
       - https://8.8.8.8/dns-query#🚀 节点选择
+      +.zju.edu.cn:
+      - 10.10.0.21
+      - https://1.1.1.1/dns-query#🚀 节点选择
+      - https://1.0.0.1/dns-query#🚀 节点选择
+      - https://8.8.8.8/dns-query#🚀 节点选择
     nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
@@ -36,10 +41,19 @@ HEAD:
     - +.microsoft*.com
     - localhost.ptlogin2.qq.com
 TEST_URL: https://www.gstatic.com/generate_204
-
 RULESET:
-- - 🎯 全球直连
-  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🛸 PT站
+  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/PrivateTracker.list
+- - ✔ ZJU-INTL
+  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ZJU-INTL.list
+- - ✔ ZJU
+  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ZJU.list
+- - 📃 ZJU More Scholar
+  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ZJU-More-Scholar.list
+- - 💬 Ai平台
+  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/AI.list
+- - 💬 Ai平台
+  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/OpenAi.list
 - - 🎯 全球直连
   - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/LocalAreaNetwork.list
 - - 🎯 全球直连
@@ -70,10 +84,6 @@ RULESET:
   - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Apple.list
 - - 📲 电报消息
   - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Telegram.list
-- - 💬 Ai平台
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/AI.list
-- - 💬 Ai平台
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/OpenAi.list
 - - 🎶 网易音乐
   - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/NetEaseMusic.list
 - - 🎶 Spotify
@@ -112,15 +122,16 @@ RULESET:
   - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaCompanyIp.list
 - - 🎯 全球直连
   - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Download.list
+- - ✔ ZJU
+  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ZJU-IP.list
 - - 🎯 全球直连
   - '[]GEOIP,CN'
 - - 🐟 漏网之鱼
   - '[]FINAL'
-
 CUSTOM_PROXY_GROUP:
 - name: ♻️ 自动选择
   type: url-test
-  url: http://www.gstatic.com/generate_204
+  regex: ^(?!.*(ZJU|浙大|内网|✉️)).*
   rule: false
 - name: 🚀 手动切换1
   type: select
@@ -136,14 +147,25 @@ CUSTOM_PROXY_GROUP:
   regex: (?i:(?:\bAI\b|人工智能|OpenAI|ChatGPT|GPT|Claude|Gemini|Bard|Copilot|Perplexity|Poe|Grok))
 - name: 🔯 故障转移
   type: fallback
+  regex: ^(?!.*(ZJU|浙大|内网|✉️)).*
   rule: false
 - name: 🔮 负载均衡
   type: load-balance
+  regex: ^(?!.*(ZJU|浙大|内网|✉️)).*
   rule: false
-- name: 📲 电报消息
+- name: ✔ ZJU-INTL
+  type: select
+  prior: DIRECT
+- name: ✔ ZJU
+  type: select
+  prior: DIRECT
+- name: 📃 ZJU More Scholar
+  type: select
+  prior: DIRECT
+- name: 💬 Ai平台
   type: select
   prior: PROXY
-- name: 💬 Ai平台
+- name: 📲 电报消息
   type: select
   prior: PROXY
 - name: 📹 油管视频
@@ -191,6 +213,9 @@ CUSTOM_PROXY_GROUP:
 - name: 🎶 Spotify
   type: select
   prior: DIRECT
+- name: 🛸 PT站
+  type: select
+  prior: DIRECT
 - name: 🎯 全球直连
   type: select
   prior: DIRECT
@@ -206,6 +231,10 @@ CUSTOM_PROXY_GROUP:
 - name: 🐟 漏网之鱼
   type: select
   prior: PROXY
+- name: 🇨🇳 ZJU节点
+  type: select
+  rule: false
+  regex: ZJU|浙大
 - name: 🇭🇰 香港节点
   type: url-test
   rule: false
