@@ -39,7 +39,7 @@ TEST_URL: https://www.gstatic.com/generate_204
 
 RULESET:
 - - 🎯 全球直连
-  - https://gist.githubusercontent.com/zheint/97df8cdf94959ebc59253e599595cb3e/raw/4baf207d415570c26b06d474b2f0e81acd0056bc/ArielMyanmar.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
   - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/LocalAreaNetwork.list
 - - 🎯 全球直连
