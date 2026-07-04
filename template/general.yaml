@@ -1,40 +1,56 @@
-# Proxy Groups Configuration
+# --- Ariel VPN Services Configuration ---
+
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: :9090
+
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  default-nameserver:
+    - 223.5.5.5
+    - 8.8.8.8
+    - 1.1.1.1
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://1.0.0.1/dns-query
+
+# Proxy Group for Auto-Best-Ping
 proxy-groups:
-  - name: Auto-Best-Ping
+  - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    # IMPORTANT: Keep your original placeholder below (e.g., {{proxies}})
     proxies:
       - {{all_proxies}}
 
   - name: Proxy
     type: select
     proxies:
-      - Auto-Best-Ping
+      - ♻️ 自动选择
       - DIRECT
 
-# Rules Configuration
+# --- RULES ---
+# 1. Custom Myanmar Rules (Direct)
+# 2. Catch-all Fallback (Auto-Best-Ping)
 rules:
-  # --- Myanmar Financial & Local Services ---
-  - DOMAIN-KEYWORD,kbzpay,DIRECT
-  - DOMAIN-KEYWORD,ayapay,DIRECT
-  - DOMAIN-KEYWORD,wavemoney,DIRECT
-  - DOMAIN-KEYWORD,cbbank,DIRECT
-  - DOMAIN-SUFFIX,mm,DIRECT
-  - GEOIP,mm,DIRECT
-  - GEOIP,private,DIRECT
-  
-  # --- Media & Social Direct Rules ---
-  - GEOSITE,youtube,DIRECT
-  - GEOSITE,tiktok,DIRECT
-  - GEOSITE,telegram,DIRECT
-  - GEOIP,telegram,DIRECT
-  - DOMAIN-SUFFIX,fast.com,DIRECT
-  - DOMAIN-KEYWORD,nflxvideo,DIRECT
-  - DOMAIN-KEYWORD,netflix,DIRECT
+  - RULE-SET,ArielMyanmar,DIRECT
+  - MATCH,♻️ 自动选择
 
-  # --- Default Global Rule ---
-  # All other traffic routes through the Auto-Best-Ping group
-  - MATCH,Auto-Best-Ping
+# --- RULESET DEFINITION ---
+# Pointing to your Gist
+rule-providers:
+  ArielMyanmar:
+    type: http
+    behavior: domain
+    url: https://gist.githubusercontent.com/zheint/97df8cdf94959ebc59253e599595cb3e/raw/4baf207d415570c26b06d474b2f0e81acd0056bc/ArielMyanmar.list
+    path: ./ruleset/ArielMyanmar.yaml
+    interval: 86400
