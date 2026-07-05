@@ -36,7 +36,7 @@ HEAD:
       geoip-code: CN
       ipcidr:
       - 240.0.0.0/4
-    fake-ip-filter:
+        fake-ip-filter:
     - +.lan
     - +.microsoft*.com
     - localhost.ptlogin2.qq.com
@@ -44,6 +44,9 @@ HEAD:
     - +.tx.me
     - +.t.me
     - +.telesco.pe
+    - connectivitycheck.gstatic.com
+    - clients3.google.com
+    - captive.apple.com
 TEST_URL: https://www.gstatic.com/generate_204
 RULESET:
 # 1. Bypass Proxy entirely (Reads from your GitHub list)
