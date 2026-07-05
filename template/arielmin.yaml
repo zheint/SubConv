@@ -40,38 +40,8 @@ HEAD:
     - +.lan
     - +.microsoft*.com
     - localhost.ptlogin2.qq.com
-    - +.telegram.org
-    - +.tx.me
-    - +.t.me
-    - +.telesco.pe
 TEST_URL: https://www.gstatic.com/generate_204
 RULESET:
-- - DIRECT
-  - '[]DOMAIN-SUFFIX,fast.com'
-- - DIRECT
-  - '[]IP-CIDR,91.108.4.0/22,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR,91.108.8.0/22,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR,91.108.12.0/22,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR,91.108.16.0/22,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR,91.108.20.0/22,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR,91.108.56.0/22,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR,149.154.160.0/20,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR,185.76.151.0/24,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR6,2001:b28:f23d::/48,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR6,2001:b28:f23f::/48,no-resolve'
-- - DIRECT
-  - '[]IP-CIDR6,2001:67c:4e8::/48,no-resolve'
-- - DIRECT
-  - '[]DOMAIN,ariel.premiumcloud.shop'
 - - 🛸 PT站
   - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - ✔ ZJU-INTL
@@ -197,7 +167,7 @@ CUSTOM_PROXY_GROUP:
   prior: PROXY
 - name: 📲 电报消息
   type: select
-  prior: DIRECT
+  prior: PROXY
 - name: 📹 油管视频
   type: select
   prior: PROXY
