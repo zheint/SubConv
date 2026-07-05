@@ -45,85 +45,85 @@ RULESET:
 - - 🛸 PT站
   - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - ✔ ZJU-INTL
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ZJU-INTL.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - ✔ ZJU
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ZJU.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 📃 ZJU More Scholar
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ZJU-More-Scholar.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 💬 Ai平台
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/AI.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 💬 Ai平台
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/OpenAi.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/LocalAreaNetwork.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/UnBan.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🛑 广告拦截
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanAD.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🍃 应用净化
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanProgramAD.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🛑 广告拦截
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanEasyList.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🛑 广告拦截
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanEasyListChina.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🛡️ 隐私防护
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanEasyPrivacy.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 📢 谷歌FCM
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/GoogleFCM.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 📢 谷歌服务
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Google.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Adobe.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - Ⓜ️ 微软Bing
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Bing.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - Ⓜ️ 微软云盘
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/OneDrive.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - Ⓜ️ 微软服务
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Microsoft.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🍎 苹果服务
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Apple.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 📲 电报消息
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Telegram.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎶 网易音乐
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/NetEaseMusic.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎶 Spotify
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Spotify.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎮 游戏平台
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Epic.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎮 游戏平台
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Origin.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎮 游戏平台
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Sony.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎮 游戏平台
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Steam.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎮 游戏平台
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Nintendo.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 📹 油管视频
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/YouTube.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎥 奈飞视频
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Netflix.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 📺 巴哈姆特
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Bahamut.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 📺 哔哩哔哩
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/BilibiliHMT.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 📺 哔哩哔哩
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Bilibili.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🌏 国内媒体
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaMedia.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🌍 国外媒体
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ProxyMedia.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🚀 节点选择
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ProxyGFWlist.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaIp.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaDomain.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaCompanyIp.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Download.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - ✔ ZJU
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ZJU-IP.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
   - '[]GEOIP,CN'
 - - 🐟 漏网之鱼
