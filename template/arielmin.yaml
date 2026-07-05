@@ -40,20 +40,120 @@ HEAD:
     - +.lan
     - +.microsoft*.com
     - localhost.ptlogin2.qq.com
+    - +.telegram.org
+    - +.tx.me
+    - +.t.me
+    - +.telesco.pe
 TEST_URL: https://www.gstatic.com/generate_204
 RULESET:
+- - DIRECT
+  - '[]DOMAIN-SUFFIX,fast.com'
+- - DIRECT
+  - '[]IP-CIDR,91.108.4.0/22,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR,91.108.8.0/22,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR,91.108.12.0/22,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR,91.108.16.0/22,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR,91.108.20.0/22,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR,91.108.56.0/22,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR,149.154.160.0/20,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR,185.76.151.0/24,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR6,2001:b28:f23d::/48,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR6,2001:b28:f23f::/48,no-resolve'
+- - DIRECT
+  - '[]IP-CIDR6,2001:67c:4e8::/48,no-resolve'
+- - DIRECT
+  - '[]DOMAIN,ariel.premiumcloud.shop'
+- - 🛸 PT站
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - ✔ ZJU-INTL
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - ✔ ZJU
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 📃 ZJU More Scholar
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 💬 Ai平台
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 💬 Ai平台
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎯 全球直连
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎯 全球直连
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🛑 广告拦截
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🍃 应用净化
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🛑 广告拦截
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🛑 广告拦截
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🛡️ 隐私防护
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 📢 谷歌FCM
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 📢 谷歌服务
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎯 全球直连
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - Ⓜ️ 微软Bing
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - Ⓜ️ 微软云盘
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - Ⓜ️ 微软服务
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🍎 苹果服务
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 📲 电报消息
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎶 网易音乐
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎶 Spotify
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎮 游戏平台
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎮 游戏平台
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎮 游戏平台
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎮 游戏平台
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎮 游戏平台
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 📹 油管视频
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🎥 奈飞视频
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 📺 巴哈姆特
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 📺 哔哩哔哩
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 📺 哔哩哔哩
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🌏 国内媒体
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
+- - 🌍 国外媒体
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🚀 节点选择
   - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaIp.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaDomain.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaCompanyIp.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Download.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - ✔ ZJU
-  - https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ZJU-IP.list
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/ArielMyanmar.list
 - - 🎯 全球直连
   - '[]GEOIP,CN'
 - - 🐟 漏网之鱼
@@ -97,7 +197,7 @@ CUSTOM_PROXY_GROUP:
   prior: PROXY
 - name: 📲 电报消息
   type: select
-  prior: PROXY
+  prior: DIRECT
 - name: 📹 油管视频
   type: select
   prior: PROXY
