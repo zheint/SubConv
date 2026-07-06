@@ -24,6 +24,7 @@ HEAD:
       - https://1.0.0.1/dns-query#♻️ 自动选择
       - https://8.8.8.8/dns-query#♻️ 自动选择
     nameserver:
+    - https://1.1.1.1/dns-query
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
     - https://8.8.8.8/dns-query#♻️ 自动选择
@@ -52,6 +53,13 @@ HEAD:
     - connectivitycheck.android.com
     - clients3.google.com
     - captive.apple.com
+    - connect.rom.miui.com
+    - generate_204.miui.com
+    - g.mi.com
+    - +.miui.com
+    - +.xiaomi.com
+    - +.xiaomi.net
+    - captive.v.network
 TEST_URL: https://www.gstatic.com/generate_204
 RULESET:
 # 1. Bypass Proxy entirely (Reads from your GitHub list)
