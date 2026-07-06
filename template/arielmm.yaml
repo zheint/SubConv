@@ -34,6 +34,16 @@ dns:
   - +.lan
   - +.microsoft*.com
   - localhost.ptlogin2.qq.com
+proxy-providers:
+  subscription0:
+    type: http
+    url: https://ariel.premiumcloud.shop/provider?url=https%3A%2F%2Fapi3.joyjoybb.com%3A2096%2Fsub%2Ftt8k
+    interval: 180
+    path: ./sub/subscription0.yaml
+    health-check:
+      enable: true
+      interval: 60
+      url: https://www.gstatic.com/generate_204
 proxy-groups:
 - name: 🚀 节点选择
   type: select
@@ -47,26 +57,24 @@ proxy-groups:
   - DIRECT
 - name: ♻️ 自动选择
   type: url-test
-  filter: ".*"
-  url: https://www.gstatic.com/generate_204
-  interval: 60
-  tolerance: 50
+  use:
+  - subscription0
 - name: 🚀 手动切换1
   type: select
-  filter: ".*"
+  use:
+  - subscription0
 - name: 🚀 手动切换2
   type: select
-  filter: ".*"
+  use:
+  - subscription0
 - name: 🔯 故障转移
   type: fallback
-  filter: ".*"
-  url: https://www.gstatic.com/generate_204
-  interval: 60
+  use:
+  - subscription0
 - name: 🔮 负载均衡
   type: load-balance
-  filter: ".*"
-  url: https://www.gstatic.com/generate_204
-  interval: 60
+  use:
+  - subscription0
 - name: 📲 电报消息
   type: select
   proxies:
@@ -334,10 +342,19 @@ proxy-groups:
 - name: 🇸🇬 狮城节点
   type: url-test
   filter: (?i:\b(?:SG|SGP)\d*\b|Singapore|新加坡|狮城|[^-]新)
+  use:
+  - subscription0
   url: https://www.gstatic.com/generate_204
   interval: 60
   tolerance: 50
 rule-providers:
+  arielupdate:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/arielupdate.txt
+    url: https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/arielupdate.list
   LocalAreaNetwork:
     type: http
     behavior: classical
@@ -592,17 +609,7 @@ rule-providers:
     url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Download.list
 rules:
 - DOMAIN,ariel.premiumcloud.shop,DIRECT
-- DOMAIN-SUFFIX,fast.com,DIRECT
-- DOMAIN-SUFFIX,whatismyipaddress.com,DIRECT
-- DOMAIN-KEYWORD,tiktok,DIRECT
-- DOMAIN-SUFFIX,byteoversea.com,DIRECT
-- DOMAIN-SUFFIX,ibyteimg.com,DIRECT
-- DOMAIN-SUFFIX,tiktokcdn.com,DIRECT
-- DOMAIN-KEYWORD,kbz,DIRECT
-- DOMAIN-KEYWORD,ayapay,DIRECT
-- DOMAIN-SUFFIX,kbzbank.com,DIRECT
-- DOMAIN-SUFFIX,kbzpay.com,DIRECT
-- DOMAIN-SUFFIX,ayabank.com,DIRECT
+- RULE-SET,arielupdate,DIRECT
 - RULE-SET,LocalAreaNetwork,🎯 全球直连
 - RULE-SET,UnBan,🎯 全球直连
 - RULE-SET,BanAD,🛑 广告拦截
