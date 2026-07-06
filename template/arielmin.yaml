@@ -44,8 +44,16 @@ HEAD:
     - +.tx.me
     - +.t.me
     - +.telesco.pe
+    # --- Android & Google ---
     - connectivitycheck.gstatic.com
     - clients3.google.com
+    - www.gstatic.com
+    - cp.cloudflare.com
+    # --- Chinese ROMs (Xiaomi, Huawei, Oppo, Vivo) ---
+    - connect.rom.miui.com
+    - +.platform.hicloud.com
+    - +.coloros.com
+    - +.vivo.com
     - captive.apple.com
 TEST_URL: https://www.gstatic.com/generate_204
 RULESET:
