@@ -1,0 +1,57 @@
+HEAD:
+  mixed-port: 7890
+  allow-lan: true
+  mode: rule
+  log-level: info
+  external-controller: :9090
+  dns:
+    enable: true
+    listen: 0.0.0.0:1053
+    default-nameserver:
+    - 223.5.5.5
+    - 8.8.8.8
+    - 1.1.1.1
+    proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    nameserver-policy:
+      geosite:gfw,geolocation-!cn:
+      - https://1.1.1.1/dns-query#♻️ 自动选择
+      - https://1.0.0.1/dns-query#♻️ 自动选择
+      - https://8.8.8.8/dns-query#♻️ 自动选择
+      +.zju.edu.cn:
+      - 10.10.0.21
+      - https://1.1.1.1/dns-query#♻️ 自动选择
+      - https://1.0.0.1/dns-query#♻️ 自动选择
+      - https://8.8.8.8/dns-query#♻️ 自动选择
+    nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+    - https://8.8.8.8/dns-query#♻️ 自动选择
+    fallback:
+    - https://1.1.1.1/dns-query#♻️ 自动选择
+    - https://1.0.0.1/dns-query#♻️ 自动选择
+    - https://8.8.8.8/dns-query#♻️ 自动选择
+    fallback-filter:
+      geoip: false
+      geoip-code: CN
+      ipcidr:
+      - 240.0.0.0/4
+TEST_URL: https://www.gstatic.com/generate_204
+RULESET:
+# 1. Bypass Proxy entirely (Reads from your GitHub list)
+- - DIRECT
+  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/arielupdate.list
+
+# 2. Chinese IPs bypass Proxy
+- - DIRECT
+  - '[]GEOIP,CN'
+
+# 3. Everything else automatically uses the lowest ping node
+- - ♻️ 自动选择
+  - '[]FINAL'
+CUSTOM_PROXY_GROUP:
+# The only proxy group: Pings all nodes (regex: .*) and picks the fastest
+- name: ♻️ 自动选择
+  type: url-test
+  regex: .*
+  rule: false
