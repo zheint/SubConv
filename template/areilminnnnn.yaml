@@ -36,7 +36,7 @@ HEAD:
       geoip-code: CN
       ipcidr:
       - 240.0.0.0/4
-TEST_URL: https://www.gstatic.com/generate_204
+      
 RULESET:
 # 1. Bypass Proxy entirely (Reads from your GitHub list)
 - - DIRECT
