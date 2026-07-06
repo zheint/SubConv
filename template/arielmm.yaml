@@ -34,16 +34,7 @@ dns:
   - +.lan
   - +.microsoft*.com
   - localhost.ptlogin2.qq.com
-proxy-providers:
-  subscription0:
-    type: http
-    url: https://ariel.premiumcloud.shop/provider?url=https%3A%2F%2Fapi3.joyjoybb.com%3A2096%2Fsub%2Ftt8k
-    interval: 180
-    path: ./sub/subscription0.yaml
-    health-check:
-      enable: true
-      interval: 60
-      url: https://www.gstatic.com/generate_204
+TEST_URL: https://www.gstatic.com/generate_204
 proxy-groups:
 - name: 🚀 节点选择
   type: select
