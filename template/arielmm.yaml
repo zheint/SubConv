@@ -1,62 +1,644 @@
-HEAD:
-  mixed-port: 7890
-  allow-lan: true
-  mode: rule
-  log-level: info
-  external-controller: :9090
-  dns:
-    enable: true
-    listen: 0.0.0.0:1053
-    default-nameserver:
-    - 223.5.5.5
-    - 8.8.8.8
-    - 1.1.1.1
-    proxy-server-nameserver:
-    - https://dns.alidns.com/dns-query
-    nameserver-policy:
-      geosite:gfw,geolocation-!cn:
-      - https://1.1.1.1/dns-query#♻️ 自动选择
-      - https://1.0.0.1/dns-query#♻️ 自动选择
-      - https://8.8.8.8/dns-query#♻️ 自动选择
-      +.zju.edu.cn:
-      - 10.10.0.21
-      - https://1.1.1.1/dns-query#♻️ 自动选择
-      - https://1.0.0.1/dns-query#♻️ 自动选择
-      - https://8.8.8.8/dns-query#♻️ 自动选择
-    nameserver:
-    - https://1.1.1.1/dns-query
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-    - https://8.8.8.8/dns-query#♻️ 自动选择
-    fallback:
-    - https://1.1.1.1/dns-query#♻️ 自动选择
-    - https://1.0.0.1/dns-query#♻️ 自动选择
-    - https://8.8.8.8/dns-query#♻️ 自动选择
-    fallback-filter:
-      geoip: false
-      geoip-code: CN
-      ipcidr:
-      - 240.0.0.0/4
-    fake-ip-filter:
-    - +.lan
-    - +.microsoft*.com
-    - localhost.ptlogin2.qq.com
-TEST_URL: https://www.gstatic.com/generate_204
-RULESET:
-# 1. Bypass Proxy entirely (Reads from your GitHub list)
-- - DIRECT
-  - https://raw.githubusercontent.com/zheint/subcon/refs/heads/main/arielupdate.list
-
-# 2. Myanmar IPs bypass Proxy
-- - DIRECT
-  - '[]GEOIP,MM'
-
-# 3. Everything else automatically uses the lowest ping node
-- - ♻️ 自动选择
-  - '[]FINAL'
-CUSTOM_PROXY_GROUP:
-# The only proxy group: Pings all nodes (regex: .*) and picks the fastest
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: :9090
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  default-nameserver:
+  - 223.5.5.5
+  - 8.8.8.8
+  - 1.1.1.1
+  proxy-server-nameserver:
+  - https://dns.alidns.com/dns-query
+  nameserver-policy:
+    geosite:gfw,geolocation-!cn:
+    - https://1.1.1.1/dns-query#🚀 节点选择
+    - https://1.0.0.1/dns-query#🚀 节点选择
+    - https://8.8.8.8/dns-query#🚀 节点选择
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  - https://8.8.8.8/dns-query#🚀 节点选择
+  fallback:
+  - https://1.1.1.1/dns-query#🚀 节点选择
+  - https://1.0.0.1/dns-query#🚀 节点选择
+  - https://8.8.8.8/dns-query#🚀 节点选择
+  fallback-filter:
+    geoip: false
+    geoip-code: CN
+    ipcidr:
+    - 240.0.0.0/4
+  fake-ip-filter:
+  - +.lan
+  - +.microsoft*.com
+  - localhost.ptlogin2.qq.com
+proxy-groups:
+- name: 🚀 节点选择
+  type: select
+  proxies:
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
 - name: ♻️ 自动选择
   type: url-test
-  regex: .*
-  rule: false
+  filter: ".*"
+  url: https://www.gstatic.com/generate_204
+  interval: 60
+  tolerance: 50
+- name: 🚀 手动切换1
+  type: select
+  filter: ".*"
+- name: 🚀 手动切换2
+  type: select
+  filter: ".*"
+- name: 🔯 故障转移
+  type: fallback
+  filter: ".*"
+  url: https://www.gstatic.com/generate_204
+  interval: 60
+- name: 🔮 负载均衡
+  type: load-balance
+  filter: ".*"
+  url: https://www.gstatic.com/generate_204
+  interval: 60
+- name: 📲 电报消息
+  type: select
+  proxies:
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
+  - REJECT
+- name: 💬 Ai平台
+  type: select
+  proxies:
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
+  - REJECT
+- name: 📹 油管视频
+  type: select
+  proxies:
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
+  - REJECT
+- name: 🎥 奈飞视频
+  type: select
+  proxies:
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
+  - REJECT
+- name: 📺 巴哈姆特
+  type: select
+  proxies:
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
+  - REJECT
+- name: 📺 哔哩哔哩
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🌍 国外媒体
+  type: select
+  proxies:
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
+  - REJECT
+- name: 🌏 国内媒体
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 📢 谷歌FCM
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 📢 谷歌服务
+  type: select
+  proxies:
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
+  - REJECT
+- name: Ⓜ️ 微软Bing
+  type: select
+  proxies:
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
+  - REJECT
+- name: Ⓜ️ 微软云盘
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: Ⓜ️ 微软服务
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🍎 苹果服务
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🎮 游戏平台
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🎶 网易音乐
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🎶 Spotify
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🎯 全球直连
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🛑 广告拦截
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🍃 应用净化
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🛡️ 隐私防护
+  type: select
+  proxies:
+  - REJECT
+  - DIRECT
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+- name: 🐟 漏网之鱼
+  type: select
+  proxies:
+  - 🚀 节点选择
+  - ♻️ 自动选择
+  - 🚀 手动切换1
+  - 🚀 手动切换2
+  - 🔯 故障转移
+  - 🔮 负载均衡
+  - 🇸🇬 狮城节点
+  - DIRECT
+  - REJECT
+- name: 🇸🇬 狮城节点
+  type: url-test
+  filter: (?i:\b(?:SG|SGP)\d*\b|Singapore|新加坡|狮城|[^-]新)
+  url: https://www.gstatic.com/generate_204
+  interval: 60
+  tolerance: 50
+rule-providers:
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/LocalAreaNetwork.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/LocalAreaNetwork.list
+  UnBan:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/UnBan.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/UnBan.list
+  BanAD:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/BanAD.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanAD.list
+  BanProgramAD:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/BanProgramAD.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanProgramAD.list
+  BanEasyList:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/BanEasyList.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanEasyList.list
+  BanEasyListChina:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/BanEasyListChina.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanEasyListChina.list
+  BanEasyPrivacy:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/BanEasyPrivacy.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/BanEasyPrivacy.list
+  GoogleFCM:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/GoogleFCM.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/GoogleFCM.list
+  Google:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Google.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Google.list
+  Adobe:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Adobe.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Adobe.list
+  Bing:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Bing.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Bing.list
+  OneDrive:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/OneDrive.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/OneDrive.list
+  Microsoft:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Microsoft.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Microsoft.list
+  Apple:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Apple.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Apple.list
+  Telegram:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Telegram.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Telegram.list
+  AI:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/AI.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/AI.list
+  OpenAi:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/OpenAi.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/OpenAi.list
+  NetEaseMusic:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/NetEaseMusic.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/NetEaseMusic.list
+  Spotify:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Spotify.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Spotify.list
+  Epic:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Epic.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Epic.list
+  Origin:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Origin.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Origin.list
+  Sony:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Sony.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Sony.list
+  Steam:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Steam.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Steam.list
+  Nintendo:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Nintendo.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Nintendo.list
+  YouTube:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/YouTube.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/YouTube.list
+  Netflix:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Netflix.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Netflix.list
+  Bahamut:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Bahamut.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Bahamut.list
+  BilibiliHMT:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/BilibiliHMT.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/BilibiliHMT.list
+  Bilibili:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Bilibili.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Ruleset/Bilibili.list
+  ChinaMedia:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/ChinaMedia.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaMedia.list
+  ProxyMedia:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/ProxyMedia.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ProxyMedia.list
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/ProxyGFWlist.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ProxyGFWlist.list
+  ChinaIp:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/ChinaIp.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaIp.list
+  ChinaDomain:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/ChinaDomain.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaDomain.list
+  ChinaCompanyIp:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/ChinaCompanyIp.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/ChinaCompanyIp.list
+  Download:
+    type: http
+    behavior: classical
+    format: text
+    interval: 604800
+    path: ./rule/Download.txt
+    url: https://raw.githubusercontent.com/SubConv/ZJU-Rule/main/Clash/Download.list
+rules:
+- DOMAIN,ariel.premiumcloud.shop,DIRECT
+- DOMAIN-SUFFIX,fast.com,DIRECT
+- DOMAIN-SUFFIX,whatismyipaddress.com,DIRECT
+- DOMAIN-KEYWORD,tiktok,DIRECT
+- DOMAIN-SUFFIX,byteoversea.com,DIRECT
+- DOMAIN-SUFFIX,ibyteimg.com,DIRECT
+- DOMAIN-SUFFIX,tiktokcdn.com,DIRECT
+- DOMAIN-KEYWORD,kbz,DIRECT
+- DOMAIN-KEYWORD,ayapay,DIRECT
+- DOMAIN-SUFFIX,kbzbank.com,DIRECT
+- DOMAIN-SUFFIX,kbzpay.com,DIRECT
+- DOMAIN-SUFFIX,ayabank.com,DIRECT
+- RULE-SET,LocalAreaNetwork,🎯 全球直连
+- RULE-SET,UnBan,🎯 全球直连
+- RULE-SET,BanAD,🛑 广告拦截
+- RULE-SET,BanProgramAD,🍃 应用净化
+- RULE-SET,BanEasyList,🛑 广告拦截
+- RULE-SET,BanEasyListChina,🛑 广告拦截
+- RULE-SET,BanEasyPrivacy,🛡️ 隐私防护
+- RULE-SET,GoogleFCM,📢 谷歌FCM
+- RULE-SET,Google,📢 谷歌服务
+- RULE-SET,Adobe,🎯 全球直连
+- RULE-SET,Bing,Ⓜ️ 微软Bing
+- RULE-SET,OneDrive,Ⓜ️ 微软云盘
+- RULE-SET,Microsoft,Ⓜ️ 微软服务
+- RULE-SET,Apple,🍎 苹果服务
+- RULE-SET,Telegram,DIRECT
+- RULE-SET,AI,💬 Ai平台
+- RULE-SET,OpenAi,💬 Ai平台
+- RULE-SET,NetEaseMusic,🎶 网易音乐
+- RULE-SET,Spotify,🎶 Spotify
+- RULE-SET,Epic,🎮 游戏平台
+- RULE-SET,Origin,🎮 游戏平台
+- RULE-SET,Sony,🎮 游戏平台
+- RULE-SET,Steam,🎮 游戏平台
+- RULE-SET,Nintendo,🎮 游戏平台
+- RULE-SET,YouTube,DIRECT
+- RULE-SET,Netflix,🎥 奈飞视频
+- RULE-SET,Bahamut,📺 巴哈姆特
+- RULE-SET,BilibiliHMT,📺 哔哩哔哩
+- RULE-SET,Bilibili,📺 哔哩哔哩
+- RULE-SET,ChinaMedia,🌏 国内媒体
+- RULE-SET,ProxyMedia,🌍 国外媒体
+- RULE-SET,ProxyGFWlist,🚀 节点选择
+- RULE-SET,ChinaIp,🎯 全球直连
+- RULE-SET,ChinaDomain,🎯 全球直连
+- RULE-SET,ChinaCompanyIp,🎯 全球直连
+- RULE-SET,Download,🎯 全球直连
+- GEOIP,CN,🎯 全球直连
+- GEOIP,MM,DIRECT
+- MATCH,🐟 漏网之鱼
