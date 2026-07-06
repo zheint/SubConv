@@ -41,25 +41,6 @@ HEAD:
     - +.lan
     - +.microsoft*.com
     - localhost.ptlogin2.qq.com
-    - +.telegram.org
-    - +.tx.me
-    - +.t.me
-    - +.telesco.pe
-    - +.gstatic.com
-    - +.ntp.org
-    - time.android.com
-    - time.windows.com
-    - time.apple.com
-    - connectivitycheck.android.com
-    - clients3.google.com
-    - captive.apple.com
-    - connect.rom.miui.com
-    - generate_204.miui.com
-    - g.mi.com
-    - +.miui.com
-    - +.xiaomi.com
-    - +.xiaomi.net
-    - captive.v.network
 TEST_URL: https://www.gstatic.com/generate_204
 RULESET:
 # 1. Bypass Proxy entirely (Reads from your GitHub list)
